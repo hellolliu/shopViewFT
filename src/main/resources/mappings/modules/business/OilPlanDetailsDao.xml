@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilPlanDetailsDao">
+    
+	<sql id="oilPlanDetailsColumns">
+		a.id AS "id",
+		a.product_id AS "productId",
+		a.num AS "num",
+		a.plan_id AS "planId",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag"
+	</sql>
+	
+	<sql id="oilPlanDetailsJoins">
+	</sql>
+    
+	<select id="get" resultType="OilPlanDetails">
+		SELECT 
+			<include refid="oilPlanDetailsColumns"/>
+		FROM oil_plan_details a
+		<include refid="oilPlanDetailsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilPlanDetails">
+		SELECT 
+			<include refid="oilPlanDetailsColumns"/>
+		FROM oil_plan_details a
+		<include refid="oilPlanDetailsJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilPlanDetails">
+		SELECT 
+			<include refid="oilPlanDetailsColumns"/>
+		FROM oil_plan_details a
+		<include refid="oilPlanDetailsJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_plan_details(
+			id,
+			product_id,
+			num,
+			plan_id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag
+		) VALUES (
+			#{id},
+			#{productId},
+			#{num},
+			#{planId},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_plan_details SET 	
+			product_id = #{productId},
+			num = #{num},
+			plan_id = #{planId},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_plan_details SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

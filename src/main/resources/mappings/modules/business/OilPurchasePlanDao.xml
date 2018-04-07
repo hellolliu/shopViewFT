@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilPurchasePlanDao">
+    
+	<sql id="oilPurchasePlanColumns">
+		a.plan_name AS "planName",
+		a.total_amount_num AS "totalAmountNum",
+		a.total_amount_due AS "totalAmountDue",
+		a.total_amount AS "totalAmount",
+		a.exp_date AS "expDate",
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag"
+	</sql>
+	
+	<sql id="oilPurchasePlanJoins">
+	</sql>
+    
+	<select id="get" resultType="OilPurchasePlan">
+		SELECT 
+			<include refid="oilPurchasePlanColumns"/>
+		FROM oil_purchase_plan a
+		<include refid="oilPurchasePlanJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilPurchasePlan">
+		SELECT 
+			<include refid="oilPurchasePlanColumns"/>
+		FROM oil_purchase_plan a
+		<include refid="oilPurchasePlanJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="planName != null and planName != ''">
+				AND a.plan_name = #{planName}
+			</if>
+			<if test="totalAmount != null and totalAmount != ''">
+				AND a.total_amount = #{totalAmount}
+			</if>
+			<if test="expDate != null and expDate != ''">
+				AND a.exp_date = #{expDate}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilPurchasePlan">
+		SELECT 
+			<include refid="oilPurchasePlanColumns"/>
+		FROM oil_purchase_plan a
+		<include refid="oilPurchasePlanJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_purchase_plan(
+			plan_name,
+			total_amount_num,
+			total_amount_due,
+			total_amount,
+			exp_date,
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag
+		) VALUES (
+			#{planName},
+			#{totalAmountNum},
+			#{totalAmountDue},
+			#{totalAmount},
+			#{expDate},
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_purchase_plan SET 	
+			plan_name = #{planName},
+			total_amount_num = #{totalAmountNum},
+			total_amount_due = #{totalAmountDue},
+			total_amount = #{totalAmount},
+			exp_date = #{expDate},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_purchase_plan SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

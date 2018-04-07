@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilBusInfoDao">
+    
+	<sql id="oilBusInfoColumns">
+		a.c_name AS "cName",
+		a.per_name AS "perName",
+		a.intention AS "intention",
+		a.brand AS "brand",
+		a.dosage AS "dosage",
+		a.usa_cycle AS "usaCycle",
+		a.pay_method AS "payMethod",
+		a.phone AS "phone",
+		a.flow_number AS "flowNumber",
+		a.com_address AS "comAddress",
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="oilBusInfoJoins">
+	</sql>
+    
+	<select id="get" resultType="OilBusInfo">
+		SELECT 
+			<include refid="oilBusInfoColumns"/>
+		FROM oil_bus_info a
+		<include refid="oilBusInfoJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilBusInfo">
+		SELECT 
+			<include refid="oilBusInfoColumns"/>
+		FROM oil_bus_info a
+		<include refid="oilBusInfoJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="cName != null and cName != ''">
+				AND a.c_name = #{cName}
+			</if>
+			<if test="perName != null and perName != ''">
+				AND a.per_name = #{perName}
+			</if>
+			<if test="comAddress != null and comAddress != ''">
+				AND a.com_address = #{comAddress}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilBusInfo">
+		SELECT 
+			<include refid="oilBusInfoColumns"/>
+		FROM oil_bus_info a
+		<include refid="oilBusInfoJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_bus_info(
+			c_name,
+			per_name,
+			intention,
+			brand,
+			dosage,
+			usa_cycle,
+			pay_method,
+			phone,
+			flow_number,
+			com_address,
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{cName},
+			#{perName},
+			#{intention},
+			#{brand},
+			#{dosage},
+			#{usaCycle},
+			#{payMethod},
+			#{phone},
+			#{flowNumber},
+			#{comAddress},
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_bus_info SET 	
+			c_name = #{cName},
+			per_name = #{perName},
+			intention = #{intention},
+			brand = #{brand},
+			dosage = #{dosage},
+			usa_cycle = #{usaCycle},
+			pay_method = #{payMethod},
+			phone = #{phone},
+			flow_number = #{flowNumber},
+			com_address = #{comAddress},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_bus_info SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

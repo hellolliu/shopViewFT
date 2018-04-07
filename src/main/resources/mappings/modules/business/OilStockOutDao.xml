@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilStockOutDao">
+    
+	<sql id="oilStockOutColumns">
+		a.de_name AS "deName",
+		a.delivery_date AS "deliveryDate",
+		a.outbound_gname AS "outboundGname",
+		a.outbound_quantity AS "outboundQuantity",
+		a.outbound_units AS "outboundUnits",
+		a.c_address AS "cAddress",
+		a.phone AS "phone",
+		a.order_number AS "orderNumber",
+		a.flow_number AS "flowNumber",
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="oilStockOutJoins">
+	</sql>
+    
+	<select id="get" resultType="OilStockOut">
+		SELECT 
+			<include refid="oilStockOutColumns"/>
+		FROM oil_stock_out a
+		<include refid="oilStockOutJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilStockOut">
+		SELECT 
+			<include refid="oilStockOutColumns"/>
+		FROM oil_stock_out a
+		<include refid="oilStockOutJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="deName != null and deName != ''">
+				AND a.de_name = #{deName}
+			</if>
+			<if test="deliveryDate != null and deliveryDate != ''">
+				AND a.delivery_date = #{deliveryDate}
+			</if>
+			<if test="outboundGname != null and outboundGname != ''">
+				AND a.outbound_gname = #{outboundGname}
+			</if>
+			<if test="outboundQuantity != null and outboundQuantity != ''">
+				AND a.outbound_quantity = #{outboundQuantity}
+			</if>
+			<if test="outboundUnits != null and outboundUnits != ''">
+				AND a.outbound_units = #{outboundUnits}
+			</if>
+			<if test="cAddress != null and cAddress != ''">
+				AND a.c_address = #{cAddress}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilStockOut">
+		SELECT 
+			<include refid="oilStockOutColumns"/>
+		FROM oil_stock_out a
+		<include refid="oilStockOutJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_stock_out(
+			de_name,
+			delivery_date,
+			outbound_gname,
+			outbound_quantity,
+			outbound_units,
+			c_address,
+			phone,
+			order_number,
+			flow_number,
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{deName},
+			#{deliveryDate},
+			#{outboundGname},
+			#{outboundQuantity},
+			#{outboundUnits},
+			#{cAddress},
+			#{phone},
+			#{orderNumber},
+			#{flowNumber},
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_stock_out SET 	
+			de_name = #{deName},
+			delivery_date = #{deliveryDate},
+			outbound_gname = #{outboundGname},
+			outbound_quantity = #{outboundQuantity},
+			outbound_units = #{outboundUnits},
+			c_address = #{cAddress},
+			phone = #{phone},
+			order_number = #{orderNumber},
+			flow_number = #{flowNumber},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_stock_out SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilStockSituaDao">
+    
+	<sql id="oilStockSituaColumns">
+		a.prp_sn AS "prpSn",
+		a.gname AS "gname",
+		a.saleno AS "saleno",
+		a.factno AS "factno",
+		a.purchase_price AS "purchasePrice",
+		a.threshold AS "threshold",
+		a.purchase_cycle AS "purchaseCycle",
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="oilStockSituaJoins">
+	</sql>
+    
+	<select id="get" resultType="OilStockSitua">
+		SELECT 
+			<include refid="oilStockSituaColumns"/>
+		FROM oil_stock_situa a
+		<include refid="oilStockSituaJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilStockSitua">
+		SELECT 
+			<include refid="oilStockSituaColumns"/>
+		FROM oil_stock_situa a
+		<include refid="oilStockSituaJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="prpSn != null and prpSn != ''">
+				AND a.prp_sn = #{prpSn}
+			</if>
+			<if test="gname != null and gname != ''">
+				AND a.gname = #{gname}
+			</if>
+			<if test="saleno != null and saleno != ''">
+				AND a.saleno = #{saleno}
+			</if>
+			<if test="factno != null and factno != ''">
+				AND a.factno = #{factno}
+			</if>
+			<if test="purchasePrice != null and purchasePrice != ''">
+				AND a.purchase_price = #{purchasePrice}
+			</if>
+			<if test="threshold != null and threshold != ''">
+				AND a.threshold = #{threshold}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilStockSitua">
+		SELECT 
+			<include refid="oilStockSituaColumns"/>
+		FROM oil_stock_situa a
+		<include refid="oilStockSituaJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_stock_situa(
+			prp_sn,
+			gname,
+			saleno,
+			factno,
+			purchase_price,
+			threshold,
+			purchase_cycle,
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{prpSn},
+			#{gname},
+			#{saleno},
+			#{factno},
+			#{purchasePrice},
+			#{threshold},
+			#{purchaseCycle},
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_stock_situa SET 	
+			prp_sn = #{prpSn},
+			gname = #{gname},
+			saleno = #{saleno},
+			factno = #{factno},
+			purchase_price = #{purchasePrice},
+			threshold = #{threshold},
+			purchase_cycle = #{purchaseCycle},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_stock_situa SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilProductsDao">
+    
+	<sql id="oilProductsColumns">
+		a.id AS "id",
+		a.prp_sn AS "prpSn",
+		a.gname AS "gname",
+		a.note AS "note",
+		a.introduction AS "introduction",
+		a.flash_point AS "flashPoint",
+		a.flow_point AS "flowPoint",
+		a.cstfour AS "cstfour",
+		a.cstfive AS "cstfive",
+		a.csthundred AS "csthundred",
+		a.create_by AS "createBy.id",
+		a.spec AS "spec",
+		a.price AS "price",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="oilProductsJoins">
+	</sql>
+    
+	<select id="get" resultType="OilProducts">
+		SELECT 
+			<include refid="oilProductsColumns"/>
+		FROM oil_products a
+		<include refid="oilProductsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilProducts">
+		SELECT 
+			<include refid="oilProductsColumns"/>
+		FROM oil_products a
+		<include refid="oilProductsJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="prpSn != null and prpSn != ''">
+				AND a.prp_sn = #{prpSn}
+			</if>
+			<if test="gname != null and gname != ''">
+				AND a.gname = #{gname}
+			</if>
+			<if test="spec != null and spec != ''">
+				AND a.spec = #{spec}
+			</if>
+			<if test="price != null and price != ''">
+				AND a.price = #{price}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilProducts">
+		SELECT 
+			<include refid="oilProductsColumns"/>
+		FROM oil_products a
+		<include refid="oilProductsJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_products(
+			id,
+			prp_sn,
+			gname,
+			note,
+			introduction,
+			flash_point,
+			flow_point,
+			cstfour,
+			cstfive,
+			csthundred,
+			create_by,
+			spec,
+			price,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{id},
+			#{prpSn},
+			#{gname},
+			#{note},
+			#{introduction},
+			#{flashPoint},
+			#{flowPoint},
+			#{cstfour},
+			#{cstfive},
+			#{csthundred},
+			#{createBy.id},
+			#{spec},
+			#{price},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_products SET 	
+			prp_sn = #{prpSn},
+			gname = #{gname},
+			note = #{note},
+			introduction = #{introduction},
+			flash_point = #{flashPoint},
+			flow_point = #{flowPoint},
+			cstfour = #{cstfour},
+			cstfive = #{cstfive},
+			csthundred = #{csthundred},
+			spec = #{spec},
+			price = #{price},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_products SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
