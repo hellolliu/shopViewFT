@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.business.dao.OilStockInDao">
+    
+	<sql id="oilStockInColumns">
+		a.entry_date AS "entryDate",
+		a.purchase_gname AS "purchaseGname",
+		a.purchase_quantity AS "purchaseQuantity",
+		a.purchase_unit AS "purchaseUnit",
+		a.phone AS "phone",
+		a.in_cycle AS "inCycle",
+		a.purchase_price AS "purchasePrice",
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="oilStockInJoins">
+	</sql>
+    
+	<select id="get" resultType="OilStockIn">
+		SELECT 
+			<include refid="oilStockInColumns"/>
+		FROM oil_stock_in a
+		<include refid="oilStockInJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="OilStockIn">
+		SELECT 
+			<include refid="oilStockInColumns"/>
+		FROM oil_stock_in a
+		<include refid="oilStockInJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="entryDate != null and entryDate != ''">
+				AND a.entry_date = #{entryDate}
+			</if>
+			<if test="purchaseGname != null and purchaseGname != ''">
+				AND a.purchase_gname = #{purchaseGname}
+			</if>
+			<if test="purchaseQuantity != null and purchaseQuantity != ''">
+				AND a.purchase_quantity = #{purchaseQuantity}
+			</if>
+			<if test="purchaseUnit != null and purchaseUnit != ''">
+				AND a.purchase_unit = #{purchaseUnit}
+			</if>
+			<if test="purchasePrice != null and purchasePrice != ''">
+				AND a.purchase_price = #{purchasePrice}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="OilStockIn">
+		SELECT 
+			<include refid="oilStockInColumns"/>
+		FROM oil_stock_in a
+		<include refid="oilStockInJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO oil_stock_in(
+			entry_date,
+			purchase_gname,
+			purchase_quantity,
+			purchase_unit,
+			phone,
+			in_cycle,
+			purchase_price,
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			del_flag,
+			remarks
+		) VALUES (
+			#{entryDate},
+			#{purchaseGname},
+			#{purchaseQuantity},
+			#{purchaseUnit},
+			#{phone},
+			#{inCycle},
+			#{purchasePrice},
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{delFlag},
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE oil_stock_in SET 	
+			entry_date = #{entryDate},
+			purchase_gname = #{purchaseGname},
+			purchase_quantity = #{purchaseQuantity},
+			purchase_unit = #{purchaseUnit},
+			phone = #{phone},
+			in_cycle = #{inCycle},
+			purchase_price = #{purchasePrice},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE oil_stock_in SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
