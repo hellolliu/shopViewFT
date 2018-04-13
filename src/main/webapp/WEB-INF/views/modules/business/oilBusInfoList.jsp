@@ -25,16 +25,16 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>c_name：</label>
+			<li><label>用户公司名称：</label>
 				<form:input path="cName" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
-			<li><label>per_name：</label>
+			<li><label>负责人：</label>
 				<form:select path="perName" class="input-medium">
 					<form:option value="" label=""/>
 					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
 				</form:select>
 			</li>
-			<li><label>com_address：</label>
+			<li><label>公司地址：</label>
 				<form:input path="comAddress" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
@@ -45,15 +45,15 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>c_name</th>
-				<th>per_name</th>
-				<th>intention</th>
-				<th>brand</th>
-				<th>dosage</th>
-				<th>flow_number</th>
-				<th>com_address</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>用户公司名称</th>
+				<th>负责人</th>
+				<th>购买意向</th>
+				<th>关注产品品牌</th>
+				<th>用量</th>
+				<th>流程表编号</th>
+				<th>公司地址</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilBusInfo:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

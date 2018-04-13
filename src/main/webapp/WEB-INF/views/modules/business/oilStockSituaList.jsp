@@ -25,22 +25,22 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>prp_sn：</label>
+			<li><label>产品序号：</label>
 				<form:input path="prpSn" htmlEscape="false" maxlength="20" class="input-medium"/>
 			</li>
-			<li><label>gname：</label>
+			<li><label>产品名称：</label>
 				<form:input path="gname" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
-			<li><label>saleno：</label>
+			<li><label>销售总量：</label>
 				<form:input path="saleno" htmlEscape="false" class="input-medium"/>
 			</li>
-			<li><label>factno：</label>
+			<li><label>库存总量：</label>
 				<form:input path="factno" htmlEscape="false" class="input-medium"/>
 			</li>
-			<li><label>purchase_price：</label>
+			<li><label>进价：</label>
 				<form:input path="purchasePrice" htmlEscape="false" class="input-medium"/>
 			</li>
-			<li><label>threshold：</label>
+			<li><label>阈值：</label>
 				<form:input path="threshold" htmlEscape="false" class="input-medium"/>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
@@ -51,14 +51,14 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>prp_sn</th>
-				<th>gname</th>
-				<th>saleno</th>
-				<th>factno</th>
-				<th>purchase_price</th>
-				<th>threshold</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>产品序号</th>
+				<th>产品名称</th>
+				<th>销售总量</th>
+				<th>库存总量</th>
+				<th>进价</th>
+				<th>阈值</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilStockSitua:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

@@ -34,14 +34,14 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">de_name：</label>
+			<label class="control-label">出货员：</label>
 			<div class="controls">
 				<form:input path="deName" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">delivery_date：</label>
+			<label class="control-label">出货日期：</label>
 			<div class="controls">
 				<input name="deliveryDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate required"
 					value="<fmt:formatDate value="${oilStockOut.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
@@ -50,56 +50,56 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">outbound_gname：</label>
+			<label class="control-label">出货产品：</label>
 			<div class="controls">
 				<form:input path="outboundGname" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">outbound_quantity：</label>
+			<label class="control-label">出货数量：</label>
 			<div class="controls">
 				<form:input path="outboundQuantity" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">outbound_units：</label>
+			<label class="control-label">出货单位：</label>
 			<div class="controls">
 				<form:input path="outboundUnits" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">c_address：</label>
+			<label class="control-label">公司地址：</label>
 			<div class="controls">
 				<form:input path="cAddress" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">phone：</label>
+			<label class="control-label">电话：</label>
 			<div class="controls">
 				<form:input path="phone" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">order_number：</label>
+			<label class="control-label">关联订单：</label>
 			<div class="controls">
 				<form:input path="orderNumber" htmlEscape="false" maxlength="11" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">flow_number：</label>
+			<label class="control-label">流程编号：</label>
 			<div class="controls">
 				<form:input path="flowNumber" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>

@@ -34,56 +34,56 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">prp_sn：</label>
+			<label class="control-label">产品序号：</label>
 			<div class="controls">
 				<form:input path="prpSn" htmlEscape="false" maxlength="20" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">gname：</label>
+			<label class="control-label">产品名称：</label>
 			<div class="controls">
 				<form:input path="gname" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">saleno：</label>
+			<label class="control-label">销售总量：</label>
 			<div class="controls">
 				<form:input path="saleno" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">factno：</label>
+			<label class="control-label">库存总量：</label>
 			<div class="controls">
 				<form:input path="factno" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_price：</label>
+			<label class="control-label">进价：</label>
 			<div class="controls">
 				<form:input path="purchasePrice" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">threshold：</label>
+			<label class="control-label">阈值：</label>
 			<div class="controls">
 				<form:input path="threshold" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_cycle：</label>
+			<label class="control-label">进货周期：</label>
 			<div class="controls">
 				<form:input path="purchaseCycle" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>

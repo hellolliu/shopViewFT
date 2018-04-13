@@ -25,13 +25,13 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>plan_name：</label>
+			<li><label>进货计划：</label>
 				<form:input path="planName" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
-			<li><label>总量：</label>
+			<li><label>总容量：</label>
 				<form:input path="totalAmount" htmlEscape="false" class="input-medium"/>
 			</li>
-			<li><label>exp_date：</label>
+			<li><label>进货日期：</label>
 				<input name="expDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate"
 					value="<fmt:formatDate value="${oilPurchasePlan.expDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
 					onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false});"/>
@@ -44,13 +44,13 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>plan_name</th>
-				<th>total_amount_num</th>
-				<th>total_amount_due</th>
-				<th>总量</th>
-				<th>exp_date</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>进货计划</th>
+				<th>总数量</th>
+				<th>总金额</th>
+				<th>总容量量</th>
+				<th>进货日期</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilPurchasePlan:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

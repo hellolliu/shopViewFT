@@ -34,25 +34,25 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">product_id：</label>
+			<label class="control-label">货品编号：</label>
 			<div class="controls">
 				<form:input path="productId" htmlEscape="false" maxlength="20" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">num：</label>
+			<label class="control-label">数量：</label>
 			<div class="controls">
 				<form:input path="num" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">plan_id：</label>
+			<label class="control-label">计划编号：</label>
 			<div class="controls">
 				<form:input path="planId" htmlEscape="false" maxlength="20" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
 			</div>

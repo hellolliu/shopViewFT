@@ -25,13 +25,13 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>gname：</label>
+			<li><label>产品名称：</label>
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
-			<li><label>order_number：</label>
+			<li><label>订单号：</label>
 				<form:input path="orderNumber" htmlEscape="false" maxlength="32" class="input-medium"/>
 			</li>
-			<li><label>shipping_add：</label>
+			<li><label>收货地址：</label>
 				<form:input path="shippingAdd" htmlEscape="false" maxlength="255" class="input-medium"/>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
@@ -42,12 +42,12 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>gname</th>
-				<th>order_number</th>
-				<th>shipping_add</th>
-				<th>total_amount</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>产品名称</th>
+				<th>订单号</th>
+				<th>收货地址</th>
+				<th>总量</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilConInfo:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

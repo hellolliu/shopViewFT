@@ -25,10 +25,10 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>prp_sn：</label>
+			<li><label>产品序号：</label>
 				<form:input path="prpSn" htmlEscape="false" maxlength="20" class="input-medium"/>
 			</li>
-			<li><label>gname：</label>
+			<li><label>产品名称：</label>
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
 			<li><label>规格：</label>
@@ -45,19 +45,19 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>prp_sn</th>
-				<th>gname</th>
-				<th>note</th>
-				<th>introduction</th>
-				<th>flash_point</th>
-				<th>flow_point</th>
-				<th>cstfour</th>
-				<th>cstfive</th>
-				<th>csthundred</th>
+				<th>产品编号</th>
+				<th>产品名称</th>
+				<th>注解</th>
+				<th>简介</th>
+				<th>闪点</th>
+				<th>流点</th>
+				<th>运动粘度40℃</th>
+				<th>运动粘度50℃</th>
+				<th>运动粘度100℃</th>
 				<th>规格</th>
 				<th>价格</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilProducts:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

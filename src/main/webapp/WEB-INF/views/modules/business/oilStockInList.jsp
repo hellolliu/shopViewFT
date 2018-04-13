@@ -25,21 +25,21 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>entry_date：</label>
+			<li><label>进货日期：</label>
 				<input name="entryDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate"
 					value="<fmt:formatDate value="${oilStockIn.entryDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
 					onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',isShowClear:false});"/>
 			</li>
-			<li><label>purchase_gname：</label>
+			<li><label>进货产品：</label>
 				<form:input path="purchaseGname" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
-			<li><label>purchase_quantity：</label>
+			<li><label>进货数量：</label>
 				<form:input path="purchaseQuantity" htmlEscape="false" class="input-medium"/>
 			</li>
-			<li><label>purchase_unit：</label>
+			<li><label>进货单位：</label>
 				<form:input path="purchaseUnit" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
-			<li><label>purchase_price：</label>
+			<li><label>进货价格：</label>
 				<form:input path="purchasePrice" htmlEscape="false" class="input-medium"/>
 			</li>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
@@ -50,13 +50,13 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>entry_date</th>
-				<th>purchase_gname</th>
-				<th>purchase_quantity</th>
-				<th>purchase_unit</th>
-				<th>purchase_price</th>
-				<th>update_date</th>
-				<th>remarks</th>
+				<th>进货日期</th>
+				<th>进货产品</th>
+				<th>进货数量</th>
+				<th>进货单位</th>
+				<th>进价</th>
+				<th>更新日期</th>
+				<th>备注</th>
 				<shiro:hasPermission name="business:oilStockIn:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
 		</thead>

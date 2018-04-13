@@ -34,58 +34,58 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">prp_sn：</label>
+			<label class="control-label">产品序号：</label>
 			<div class="controls">
 				<form:input path="prpSn" htmlEscape="false" maxlength="20" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">gname：</label>
+			<label class="control-label">产品名称：</label>
 			<div class="controls">
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">note：</label>
+			<label class="control-label">注解：</label>
 			<div class="controls">
 				<form:input path="note" htmlEscape="false" maxlength="255" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">introduction：</label>
+			<label class="control-label">简介：</label>
 			<div class="controls">
 				<form:input path="introduction" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">flash_point：</label>
+			<label class="control-label">闪点：</label>
 			<div class="controls">
 				<form:input path="flashPoint" htmlEscape="false" maxlength="20" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">flow_point：</label>
+			<label class="control-label">流点：</label>
 			<div class="controls">
 				<form:input path="flowPoint" htmlEscape="false" maxlength="64" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">cstfour：</label>
+			<label class="control-label">运动粘度40℃：</label>
 			<div class="controls">
 				<form:input path="cstfour" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">cstfive：</label>
+			<label class="control-label">运动粘度50℃：</label>
 			<div class="controls">
 				<form:input path="cstfive" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">csthundred：</label>
+			<label class="control-label">运动粘度100℃：</label>
 			<div class="controls">
 				<form:input path="csthundred" htmlEscape="false" class="input-xlarge "/>
 			</div>
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>

@@ -34,7 +34,7 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">entry_date：</label>
+			<label class="control-label">进货日期：</label>
 			<div class="controls">
 				<input name="entryDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate required"
 					value="<fmt:formatDate value="${oilStockIn.entryDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
@@ -43,49 +43,49 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_gname：</label>
+			<label class="control-label">进货产品：</label>
 			<div class="controls">
 				<form:input path="purchaseGname" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_quantity：</label>
+			<label class="control-label">进货数量：</label>
 			<div class="controls">
 				<form:input path="purchaseQuantity" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_unit：</label>
+			<label class="control-label">进货单位：</label>
 			<div class="controls">
 				<form:input path="purchaseUnit" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">phone：</label>
+			<label class="control-label">进货单位电话：</label>
 			<div class="controls">
 				<form:input path="phone" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">in_cycle：</label>
+			<label class="control-label">进货周期：</label>
 			<div class="controls">
 				<form:input path="inCycle" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">purchase_price：</label>
+			<label class="control-label">进货价格：</label>
 			<div class="controls">
 				<form:input path="purchasePrice" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>

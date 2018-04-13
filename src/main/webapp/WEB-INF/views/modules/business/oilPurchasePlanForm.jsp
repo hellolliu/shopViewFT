@@ -34,34 +34,34 @@
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">plan_name：</label>
+			<label class="control-label">进货计划：</label>
 			<div class="controls">
 				<form:input path="planName" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">total_amount_num：</label>
+			<label class="control-label">总数量：</label>
 			<div class="controls">
 				<form:input path="totalAmountNum" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">total_amount_due：</label>
+			<label class="control-label">总金额：</label>
 			<div class="controls">
 				<form:input path="totalAmountDue" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">总量：</label>
+			<label class="control-label">总容量：</label>
 			<div class="controls">
 				<form:input path="totalAmount" htmlEscape="false" class="input-xlarge "/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">exp_date：</label>
+			<label class="control-label">进货日期：</label>
 			<div class="controls">
 				<input name="expDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate "
 					value="<fmt:formatDate value="${oilPurchasePlan.expDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">remarks：</label>
+			<label class="control-label">备注：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
