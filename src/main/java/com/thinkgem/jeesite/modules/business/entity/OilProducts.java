@@ -15,15 +15,15 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilProducts extends DataEntity<OilProducts> {
 	
 	private static final long serialVersionUID = 1L;
-	private String prpSn;		// prp_sn
-	private String gname;		// gname
-	private String note;		// note
-	private String introduction;		// introduction
-	private String flashPoint;		// flash_point
-	private String flowPoint;		// flow_point
-	private String cstfour;		// cstfour
-	private String cstfive;		// cstfive
-	private String csthundred;		// csthundred
+	private String prpSn;		// 产品序号
+	private String gname;		// 产品名称
+	private String note;		// 注解
+	private String introduction;		// 简介
+	private String flashPoint;		// 闪点
+	private String flowPoint;		// 流点
+	private String cstfour;		// 运动粘度40摄氏度
+	private String cstfive;		// 运动粘度50摄氏度
+	private String csthundred;		// 运动粘度100摄氏度
 	private String spec;		// 规格
 	private String price;		// 价格
 	

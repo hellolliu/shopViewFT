@@ -18,15 +18,15 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilStockOut extends DataEntity<OilStockOut> {
 	
 	private static final long serialVersionUID = 1L;
-	private String deName;		// de_name
-	private Date deliveryDate;		// delivery_date
-	private String outboundGname;		// outbound_gname
-	private String outboundQuantity;		// outbound_quantity
-	private String outboundUnits;		// outbound_units
-	private String cAddress;		// c_address
-	private String phone;		// phone
-	private String orderNumber;		// order_number
-	private String flowNumber;		// flow_number
+	private String deName;		// 出货员
+	private Date deliveryDate;		// 出库日期
+	private String outboundGname;		// 出库产品
+	private String outboundQuantity;		// 出库数量
+	private String outboundUnits;		// 出库单位
+	private String cAddress;		// 公司地址
+	private String phone;		// 电话
+	private String orderNumber;		// 关联订单
+	private String flowNumber;		// 流程编号
 	
 	public OilStockOut() {
 		super();

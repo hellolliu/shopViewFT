@@ -15,9 +15,9 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilProcess extends DataEntity<OilProcess> {
 	
 	private static final long serialVersionUID = 1L;
-	private String cNumber;		// c_number
-	private String status;		// status
-	private String perName;		// per_name
+	private String cNumber;		// 编号
+	private String status;		// 状态
+	private String perName;		// 负责人
 	
 	public OilProcess() {
 		super();

@@ -18,13 +18,13 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilStockIn extends DataEntity<OilStockIn> {
 	
 	private static final long serialVersionUID = 1L;
-	private Date entryDate;		// entry_date
-	private String purchaseGname;		// purchase_gname
-	private String purchaseQuantity;		// purchase_quantity
-	private String purchaseUnit;		// purchase_unit
-	private String phone;		// phone
-	private String inCycle;		// in_cycle
-	private String purchasePrice;		// purchase_price
+	private Date entryDate;		// 进库日期
+	private String purchaseGname;		// 进货产品
+	private String purchaseQuantity;		// 进货数量
+	private String purchaseUnit;		// 进货单位
+	private String phone;		// 电话
+	private String inCycle;		// 进货周期
+	private String purchasePrice;		// 进价
 	
 	public OilStockIn() {
 		super();

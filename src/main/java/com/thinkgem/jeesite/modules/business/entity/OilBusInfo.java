@@ -15,16 +15,16 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilBusInfo extends DataEntity<OilBusInfo> {
 	
 	private static final long serialVersionUID = 1L;
-	private String cName;		// c_name
-	private String perName;		// per_name
-	private String intention;		// intention
-	private String brand;		// brand
-	private String dosage;		// dosage
-	private String usaCycle;		// usa_cycle
-	private String payMethod;		// pay_method
-	private String phone;		// phone
-	private String flowNumber;		// flow_number
-	private String comAddress;		// com_address
+	private String cName;		// 用户公司名称
+	private String perName;		// 负责人
+	private String intention;		// 购买意向
+	private String brand;		// 关注产品
+	private String dosage;		// 用量
+	private String usaCycle;		// 使用周期
+	private String payMethod;		// 付款方式
+	private String phone;		// 电话
+	private String flowNumber;		// 流程表编号
+	private String comAddress;		// 公司地址
 	
 	public OilBusInfo() {
 		super();

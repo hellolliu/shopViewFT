@@ -15,13 +15,13 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilStockSitua extends DataEntity<OilStockSitua> {
 	
 	private static final long serialVersionUID = 1L;
-	private String prpSn;		// prp_sn
-	private String gname;		// gname
-	private String saleno;		// saleno
-	private String factno;		// factno
-	private String purchasePrice;		// purchase_price
-	private String threshold;		// threshold
-	private String purchaseCycle;		// purchase_cycle
+	private String prpSn;		// 产品序号
+	private String gname;		// 产品名称
+	private String saleno;		// 销售总量
+	private String factno;		// 库存总量
+	private String purchasePrice;		// 进价
+	private String threshold;		// 阈值
+	private String purchaseCycle;		// 进货周期
 	
 	public OilStockSitua() {
 		super();

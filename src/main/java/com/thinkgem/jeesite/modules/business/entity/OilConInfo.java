@@ -15,14 +15,14 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilConInfo extends DataEntity<OilConInfo> {
 	
 	private static final long serialVersionUID = 1L;
-	private String gname;		// gname
-	private String orderNumber;		// order_number
-	private String shippingAdd;		// shipping_add
-	private String deliveryCycle;		// delivery_cycle
-	private String totalAmount;		// total_amount
-	private String folwNumber;		// folw_number
-	private String paymentMethod;		// payment_method
-	private String totalDue;		// total_due
+	private String gname;		// 产品名称
+	private String orderNumber;		// 订单号
+	private String shippingAdd;		// 收货地址
+	private String deliveryCycle;		// 供货周期
+	private String totalAmount;		// 总量
+	private String folwNumber;		// 流程表编号
+	private String paymentMethod;		// 支付方式
+	private String totalDue;		// 应付总金额
 	
 	public OilConInfo() {
 		super();

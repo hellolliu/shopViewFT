@@ -15,9 +15,9 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilPlanDetails extends DataEntity<OilPlanDetails> {
 	
 	private static final long serialVersionUID = 1L;
-	private String productId;		// product_id
-	private String num;		// num
-	private String planId;		// plan_id
+	private String productId;		// 货品编号
+	private String num;		// 数量
+	private String planId;		// 计划编号
 	
 	public OilPlanDetails() {
 		super();

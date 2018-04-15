@@ -17,11 +17,11 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilPurchasePlan extends DataEntity<OilPurchasePlan> {
 	
 	private static final long serialVersionUID = 1L;
-	private String planName;		// plan_name
-	private String totalAmountNum;		// total_amount_num
-	private String totalAmountDue;		// total_amount_due
-	private String totalAmount;		// 总量
-	private Date expDate;		// exp_date
+	private String planName;		// 进货计划
+	private String totalAmountNum;		// 总数量
+	private String totalAmountDue;		// 总金额
+	private String totalAmount;		// 总容量
+	private Date expDate;		// 进货日期
 	
 	public OilPurchasePlan() {
 		super();
