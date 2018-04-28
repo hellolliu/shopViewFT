@@ -17,9 +17,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.common.utils.StringUtils;
+import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.business.entity.OilPlanDetails;
+import com.thinkgem.jeesite.modules.business.entity.OilProducts;
 import com.thinkgem.jeesite.modules.business.entity.OilPurchasePlan;
+import com.thinkgem.jeesite.modules.business.service.OilPlanDetailsService;
+import com.thinkgem.jeesite.modules.business.service.OilProductsService;
 import com.thinkgem.jeesite.modules.business.service.OilPurchasePlanService;
 
 /**
@@ -33,7 +37,10 @@ public class OilPurchasePlanController extends BaseController {
 
 	@Autowired
 	private OilPurchasePlanService oilPurchasePlanService;
-	
+	@Autowired
+	private OilProductsService oilProductsService;
+	@Autowired
+	private OilPlanDetailsService oilPlanDetailsService;
 	@ModelAttribute
 	public OilPurchasePlan get(@RequestParam(required=false) String id) {
 		OilPurchasePlan entity = null;
@@ -51,13 +58,22 @@ public class OilPurchasePlanController extends BaseController {
 	public String list(OilPurchasePlan oilPurchasePlan, HttpServletRequest request, HttpServletResponse response, Model model) {
 		Page<OilPurchasePlan> page = oilPurchasePlanService.findPage(new Page<OilPurchasePlan>(request, response), oilPurchasePlan); 
 		model.addAttribute("page", page);
+		for (OilPurchasePlan plan : page.getList()) {
+			OilPlanDetails detail=new OilPlanDetails();
+			detail.setPlanId(plan.getId());
+			plan.setOilPlanDetails(oilPlanDetailsService.findList(detail));
+		}
 		return "modules/business/oilPurchasePlanList";
 	}
 
 	@RequiresPermissions("business:oilPurchasePlan:view")
 	@RequestMapping(value = "form")
 	public String form(OilPurchasePlan oilPurchasePlan, Model model) {
+		OilPlanDetails detail=new OilPlanDetails();
+		detail.setPlanId(oilPurchasePlan.getId());
+		oilPurchasePlan.setOilPlanDetails(oilPlanDetailsService.findList(detail));
 		model.addAttribute("oilPurchasePlan", oilPurchasePlan);
+		model.addAttribute("oilProducts", oilProductsService.findList(new OilProducts()));
 		return "modules/business/oilPurchasePlanForm";
 	}
 
@@ -68,6 +84,23 @@ public class OilPurchasePlanController extends BaseController {
 			return form(oilPurchasePlan, model);
 		}
 		oilPurchasePlanService.save(oilPurchasePlan);
+		if (oilPurchasePlan.getOilPlanDetails()!=null&&oilPurchasePlan.getOilPlanDetails().size()!=0) {
+			if (oilPurchasePlan.getId()!=null) {
+				OilPlanDetails obj=new OilPlanDetails();
+				obj.setPlanId(oilPurchasePlan.getId());
+				oilPlanDetailsService.delete(obj);
+			}
+			int totalnum=0;//总数量
+			for (OilPlanDetails detail : oilPurchasePlan.getOilPlanDetails()) {
+				if (detail.getNum()!=null&&!"".equals(detail.getNum())) {
+					detail.setPlanId(oilPurchasePlan.getId());
+					oilPlanDetailsService.save(detail);
+					totalnum+=Integer.valueOf(detail.getNum());
+				}
+			}	
+			oilPurchasePlan.setTotalAmountNum(totalnum+"");
+			oilPurchasePlanService.save(oilPurchasePlan);
+		}
 		addMessage(redirectAttributes, "保存进货计划成功");
 		return "redirect:"+Global.getAdminPath()+"/business/oilPurchasePlan/?repage";
 	}

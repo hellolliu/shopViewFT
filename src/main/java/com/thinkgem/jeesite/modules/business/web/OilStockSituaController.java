@@ -49,7 +49,7 @@ public class OilStockSituaController extends BaseController {
 	@RequiresPermissions("business:oilStockSitua:view")
 	@RequestMapping(value = {"list", ""})
 	public String list(OilStockSitua oilStockSitua, HttpServletRequest request, HttpServletResponse response, Model model) {
-		Page<OilStockSitua> page = oilStockSituaService.findPage(new Page<OilStockSitua>(request, response), oilStockSitua); 
+		Page<OilStockSitua> page = oilStockSituaService.findPage(new Page<OilStockSitua>(request, response), oilStockSitua);
 		model.addAttribute("page", page);
 		return "modules/business/oilStockSituaList";
 	}

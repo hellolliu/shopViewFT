@@ -16,6 +16,8 @@
 		a.create_by AS "createBy.id",
 		a.spec AS "spec",
 		a.price AS "price",
+		a.photo AS "photo",
+		a.is_show As "isShow",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
@@ -53,6 +55,9 @@
 			<if test="price != null and price != ''">
 				AND a.price = #{price}
 			</if>
+			<if test="isShow != null and isShow != ''">
+				AND a.is_show = #{isShow}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -84,7 +89,7 @@
 	
 	<insert id="insert">
 		INSERT INTO oil_products(
-			id,
+		    photo,
 			prp_sn,
 			gname,
 			note,
@@ -97,13 +102,14 @@
 			create_by,
 			spec,
 			price,
+			is_show,
 			create_date,
 			update_by,
 			update_date,
 			del_flag,
 			remarks
 		) VALUES (
-			#{id},
+		    #{photo},
 			#{prpSn},
 			#{gname},
 			#{note},
@@ -116,6 +122,7 @@
 			#{createBy.id},
 			#{spec},
 			#{price},
+			#{isShow},
 			#{createDate},
 			#{updateBy.id},
 			#{updateDate},
@@ -126,6 +133,8 @@
 	
 	<update id="update">
 		UPDATE oil_products SET 	
+		    photo = #{photo},
+		    is_show = #{isShow},
 			prp_sn = #{prpSn},
 			gname = #{gname},
 			note = #{note},

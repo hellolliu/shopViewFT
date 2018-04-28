@@ -1,6 +1,3 @@
-/**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.thinkgem.jeesite.modules.business.entity;
 
 import org.hibernate.validator.constraints.Length;
@@ -15,6 +12,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilProducts extends DataEntity<OilProducts> {
 	
 	private static final long serialVersionUID = 1L;
+	private String photo;//图片
 	private String prpSn;		// 产品序号
 	private String gname;		// 产品名称
 	private String note;		// 注解
@@ -26,13 +24,23 @@ public class OilProducts extends DataEntity<OilProducts> {
 	private String csthundred;		// 运动粘度100摄氏度
 	private String spec;		// 规格
 	private String price;		// 价格
-	
+	private String isShow;
 	public OilProducts() {
 		super();
 	}
 
 	public OilProducts(String id){
 		super(id);
+	}
+
+ 
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	@Length(min=1, max=20, message="prp_sn长度必须介于 1 和 20 之间")
@@ -129,5 +137,12 @@ public class OilProducts extends DataEntity<OilProducts> {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
+
+	public String getIsShow() {
+		return isShow;
+	}
+
+	public void setIsShow(String isShow) {
+		this.isShow = isShow;
+	}
 }

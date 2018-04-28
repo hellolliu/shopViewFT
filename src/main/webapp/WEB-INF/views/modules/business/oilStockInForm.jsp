@@ -45,8 +45,9 @@
 		<div class="control-group">
 			<label class="control-label">进货产品：</label>
 			<div class="controls">
-				<form:input path="purchaseGname" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:select path="purchaseGname" class="input-medium">
+					<form:options items="${oilProducts}" itemLabel="gname" itemValue="gname" htmlEscape="false"/>
+				</form:select>
 			</div>
 		</div>
 		<div class="control-group">
@@ -59,17 +60,19 @@
 		<div class="control-group">
 			<label class="control-label">进货单位：</label>
 			<div class="controls">
-				<form:input path="purchaseUnit" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
+				<form:select path="purchaseUnit" class="input-medium">
+					<form:options items="${fns:getDictList('unit_in')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">进货单位电话：</label>
 			<div class="controls">
 				<form:input path="phone" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">进货周期：</label>
 			<div class="controls">

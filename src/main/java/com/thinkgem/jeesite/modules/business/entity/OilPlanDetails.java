@@ -1,11 +1,12 @@
 /**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.thinkgem.jeesite.modules.business.entity;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.thinkgem.jeesite.common.persistence.DataEntity;
+
+
 
 /**
  * 进货计划详情表Entity
@@ -15,7 +16,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilPlanDetails extends DataEntity<OilPlanDetails> {
 	
 	private static final long serialVersionUID = 1L;
-	private String productId;		// 货品编号
+	private String productId;		// 货品名称
 	private String num;		// 数量
 	private String planId;		// 计划编号
 	

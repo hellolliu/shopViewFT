@@ -59,7 +59,7 @@
 				<th>出库数量</th>
 				<th>出库单位</th>
 				<th>公司地址</th>
-				<th>更新日期</th>
+				<!-- <th>更新日期</th> -->
 				<th>备注</th>
 				<shiro:hasPermission name="business:oilStockOut:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
@@ -80,14 +80,14 @@
 					${oilStockOut.outboundQuantity}
 				</td>
 				<td>
-					${oilStockOut.outboundUnits}
+					${fns:getDictLabel(oilStockOut.outboundUnits, 'unit_in', '桶')}
 				</td>
 				<td>
-					${oilStockOut.cAddress}
+					<%-- ${oilStockOut.cAddress} --%>
 				</td>
-				<td>
+				<%-- <td>
 					<fmt:formatDate value="${oilStockOut.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-				</td>
+				</td> --%>
 				<td>
 					${oilStockOut.remarks}
 				</td>

@@ -24,6 +24,8 @@ import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.servlet.ValidateCodeServlet;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.business.entity.OilProducts;
+import com.thinkgem.jeesite.modules.business.service.OilProductsService;
 import com.thinkgem.jeesite.modules.cms.entity.Article;
 import com.thinkgem.jeesite.modules.cms.entity.Category;
 import com.thinkgem.jeesite.modules.cms.entity.Comment;
@@ -58,6 +60,8 @@ public class FrontController extends BaseController{
 	private CategoryService categoryService;
 	@Autowired
 	private SiteService siteService;
+	@Autowired
+	private OilProductsService oilProductsService;
 	
 	/**
 	 * 网站首页
@@ -318,7 +322,26 @@ public class FrontController extends BaseController{
 		model.addAttribute("site", site);
 		return "modules/cms/front/themes/"+site.getTheme()+"/frontMap";
 	}
-
+	/**
+	 * 产品介绍
+	 */
+	@RequestMapping(value = "product", method=RequestMethod.GET)
+	public String product(String theme,  HttpServletRequest request, HttpServletResponse response, Model model) {
+		/*Page<Comment> page = new Page<Comment>(request, response);
+		Comment c = new Comment();
+		c.setCategory(comment.getCategory());
+		c.setContentId(comment.getContentId());
+		c.setDelFlag(Comment.DEL_FLAG_NORMAL);
+		page = commentService.findPage(page, c);
+		model.addAttribute("page", page);
+		model.addAttribute("comment", comment);*/
+		OilProducts oilProducts=new OilProducts();
+		oilProducts.setIsShow("1");
+		model.addAttribute("product",oilProductsService.findList(oilProducts));
+		Site site = CmsUtils.getSite(Site.defaultSiteId());
+		model.addAttribute("site", site);
+		return "modules/cms/front/themes/basic/product";
+	}
     private String getTpl(Article article){
         if(StringUtils.isBlank(article.getCustomContentView())){
             String view = null;

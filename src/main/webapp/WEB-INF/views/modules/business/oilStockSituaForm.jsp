@@ -28,46 +28,46 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/business/oilStockSitua/">库存情况列表</a></li>
-		<li class="active"><a href="${ctx}/business/oilStockSitua/form?id=${oilStockSitua.id}">库存情况<shiro:hasPermission name="business:oilStockSitua:edit">${not empty oilStockSitua.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:oilStockSitua:edit">查看</shiro:lacksPermission></a></li>
+		<li class="active"><a href="${ctx}/business/oilStockSitua/form?id=${oilStockSitua.id}">仓库<shiro:hasPermission name="business:oilStockSitua:edit">${not empty oilStockSitua.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:oilStockSitua:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="oilStockSitua" action="${ctx}/business/oilStockSitua/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">产品序号：</label>
+			<label class="control-label">仓库序号：</label>
 			<div class="controls">
 				<form:input path="prpSn" htmlEscape="false" maxlength="20" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">产品名称：</label>
+			<label class="control-label">仓库名称：</label>
 			<div class="controls">
 				<form:input path="gname" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">销售总量：</label>
 			<div class="controls">
 				<form:input path="saleno" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
-		<div class="control-group">
+		</div> --%>
+		<%-- <div class="control-group">
 			<label class="control-label">库存总量：</label>
 			<div class="controls">
 				<form:input path="factno" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
-		<div class="control-group">
+		</div> --%>
+		<%-- <div class="control-group">
 			<label class="control-label">进价：</label>
 			<div class="controls">
 				<form:input path="purchasePrice" htmlEscape="false" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">阈值：</label>
 			<div class="controls">
@@ -75,13 +75,13 @@
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">进货周期：</label>
 			<div class="controls">
 				<form:input path="purchaseCycle" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">备注：</label>
 			<div class="controls">

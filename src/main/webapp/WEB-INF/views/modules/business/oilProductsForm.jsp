@@ -27,12 +27,19 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/business/oilProducts/">油品商品表列表</a></li>
-		<li class="active"><a href="${ctx}/business/oilProducts/form?id=${oilProducts.id}">油品商品表<shiro:hasPermission name="business:oilProducts:edit">${not empty oilProducts.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:oilProducts:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/business/oilProducts/">油品商品列表</a></li>
+		<li class="active"><a href="${ctx}/business/oilProducts/form?id=${oilProducts.id}">油品商品<shiro:hasPermission name="business:oilProducts:edit">${not empty oilProducts.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="business:oilProducts:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="oilProducts" action="${ctx}/business/oilProducts/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
+		<div class="control-group">
+			<label class="control-label">图片:</label>
+			<div class="controls">
+				<form:hidden id="nameImage" path="photo" htmlEscape="false" maxlength="255" class="input-xlarge"/>
+				<sys:ckfinder input="nameImage" type="images" uploadPath="/photo" selectMultiple="false" maxWidth="100" maxHeight="100"/>
+			</div>
+		</div>
 		<div class="control-group">
 			<label class="control-label">产品序号：</label>
 			<div class="controls">
@@ -96,10 +103,17 @@
 				<form:input path="spec" htmlEscape="false" maxlength="10" class="input-xlarge "/>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">价格：</label>
 			<div class="controls">
 				<form:input path="price" htmlEscape="false" class="input-xlarge "/>
+			</div>
+		</div> --%>
+		<div class="control-group">
+			<label class="control-label">可见:</label>
+			<div class="controls">
+				<form:radiobuttons path="isShow" items="${fns:getDictList('show_hide')}" itemLabel="label" itemValue="value" htmlEscape="false" class="required"/>
+				<span class="help-inline">该菜单或操作是否显示到官方网站</span>
 			</div>
 		</div>
 		<div class="control-group">

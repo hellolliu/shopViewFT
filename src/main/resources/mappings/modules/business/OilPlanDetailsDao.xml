@@ -33,6 +33,12 @@
 		<include refid="oilPlanDetailsJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="productId != null and productId != ''">
+				AND a.product_id = #{productId}
+			</if>
+			<if test="planId != null and planId != ''">
+				AND a.plan_id = #{planId}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -64,7 +70,6 @@
 	
 	<insert id="insert">
 		INSERT INTO oil_plan_details(
-			id,
 			product_id,
 			num,
 			plan_id,
@@ -75,7 +80,6 @@
 			remarks,
 			del_flag
 		) VALUES (
-			#{id},
 			#{productId},
 			#{num},
 			#{planId},
@@ -102,7 +106,10 @@
 	<update id="delete">
 		UPDATE oil_plan_details SET 
 			del_flag = #{DEL_FLAG_DELETE}
-		WHERE id = #{id}
+		WHERE
+		<if test="planId != null and planId != ''">
+			plan_id = #{planId}
+		</if>
 	</update>
 	
 </mapper>

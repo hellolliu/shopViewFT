@@ -46,8 +46,8 @@
 			<tr>
 				<th>进货计划</th>
 				<th>总数量</th>
-				<th>总金额</th>
-				<th>总容量量</th>
+				<!-- <th>总金额</th> -->
+				<!-- <th>总容量</th> -->
 				<th>进货日期</th>
 				<th>更新日期</th>
 				<th>备注</th>
@@ -63,12 +63,12 @@
 				<td>
 					${oilPurchasePlan.totalAmountNum}
 				</td>
-				<td>
+				<%-- <td>
 					${oilPurchasePlan.totalAmountDue}
-				</td>
-				<td>
+				</td> --%>
+				<%-- <td>
 					${oilPurchasePlan.totalAmount}
-				</td>
+				</td> --%>
 				<td>
 					<fmt:formatDate value="${oilPurchasePlan.expDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>

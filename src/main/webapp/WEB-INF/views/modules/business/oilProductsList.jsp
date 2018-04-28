@@ -18,8 +18,8 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/business/oilProducts/">油品商品表列表</a></li>
-		<shiro:hasPermission name="business:oilProducts:edit"><li><a href="${ctx}/business/oilProducts/form">油品商品表添加</a></li></shiro:hasPermission>
+		<li class="active"><a href="${ctx}/business/oilProducts/">油品商品列表</a></li>
+		<shiro:hasPermission name="business:oilProducts:edit"><li><a href="${ctx}/business/oilProducts/form">油品商品添加</a></li></shiro:hasPermission>
 	</ul>
 	<form:form id="searchForm" modelAttribute="oilProducts" action="${ctx}/business/oilProducts/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
@@ -34,9 +34,9 @@
 			<li><label>规格：</label>
 				<form:input path="spec" htmlEscape="false" maxlength="10" class="input-medium"/>
 			</li>
-			<li><label>价格：</label>
+			<%-- <li><label>价格：</label>
 				<form:input path="price" htmlEscape="false" class="input-medium"/>
-			</li>
+			</li> --%>
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
@@ -55,8 +55,8 @@
 				<th>运动粘度50℃</th>
 				<th>运动粘度100℃</th>
 				<th>规格</th>
-				<th>价格</th>
-				<th>更新日期</th>
+				<!-- <th>价格</th> -->
+				<!-- <th>更新日期</th> -->
 				<th>备注</th>
 				<shiro:hasPermission name="business:oilProducts:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
@@ -94,12 +94,12 @@
 				<td>
 					${oilProducts.spec}
 				</td>
-				<td>
+				<%-- <td>
 					${oilProducts.price}
-				</td>
-				<td>
+				</td> --%>
+				<%-- <td>
 					<fmt:formatDate value="${oilProducts.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-				</td>
+				</td> --%>
 				<td>
 					${oilProducts.remarks}
 				</td>

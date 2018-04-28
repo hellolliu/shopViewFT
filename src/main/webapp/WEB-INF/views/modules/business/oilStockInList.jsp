@@ -73,7 +73,7 @@
 					${oilStockIn.purchaseQuantity}
 				</td>
 				<td>
-					${oilStockIn.purchaseUnit}
+					${fns:getDictLabel(oilStockIn.purchaseUnit, 'unit_in', '桶')}
 				</td>
 				<td>
 					${oilStockIn.purchasePrice}

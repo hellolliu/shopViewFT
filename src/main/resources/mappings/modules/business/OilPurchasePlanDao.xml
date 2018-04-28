@@ -74,13 +74,15 @@
 	</select>
 	
 	<insert id="insert">
+	    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+        </selectKey>
 		INSERT INTO oil_purchase_plan(
 			plan_name,
 			total_amount_num,
 			total_amount_due,
 			total_amount,
 			exp_date,
-			id,
 			create_by,
 			create_date,
 			update_by,
@@ -93,7 +95,6 @@
 			#{totalAmountDue},
 			#{totalAmount},
 			#{expDate},
-			#{id},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},

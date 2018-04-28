@@ -52,7 +52,9 @@
 		<div class="control-group">
 			<label class="control-label">出货产品：</label>
 			<div class="controls">
-				<form:input path="outboundGname" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
+				<form:select path="outboundGname" class="input-medium">
+					<form:options items="${oilProducts}" itemLabel="gname" itemValue="gname" htmlEscape="false"/>
+				</form:select>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
@@ -66,7 +68,9 @@
 		<div class="control-group">
 			<label class="control-label">出货单位：</label>
 			<div class="controls">
-				<form:input path="outboundUnits" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
+				<form:select path="outboundUnits" class="input-medium">
+					<form:options items="${fns:getDictList('unit_in')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
+				</form:select>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
@@ -84,20 +88,20 @@
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">关联订单：</label>
 			<div class="controls">
 				<form:input path="orderNumber" htmlEscape="false" maxlength="11" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
-		<div class="control-group">
+		</div> --%>
+		<%-- <div class="control-group">
 			<label class="control-label">流程编号：</label>
 			<div class="controls">
 				<form:input path="flowNumber" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">备注：</label>
 			<div class="controls">

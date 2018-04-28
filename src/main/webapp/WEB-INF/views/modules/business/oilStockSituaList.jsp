@@ -19,7 +19,7 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="${ctx}/business/oilStockSitua/">库存情况列表</a></li>
-		<shiro:hasPermission name="business:oilStockSitua:edit"><li><a href="${ctx}/business/oilStockSitua/form">库存情况添加</a></li></shiro:hasPermission>
+		<%-- <shiro:hasPermission name="business:oilStockSitua:edit"><li><a href="${ctx}/business/oilStockSitua/form">仓库添加</a></li></shiro:hasPermission> --%>
 	</ul>
 	<form:form id="searchForm" modelAttribute="oilStockSitua" action="${ctx}/business/oilStockSitua/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
@@ -58,8 +58,8 @@
 				<th>进价</th>
 				<th>阈值</th>
 				<th>更新日期</th>
-				<th>备注</th>
-				<shiro:hasPermission name="business:oilStockSitua:edit"><th>操作</th></shiro:hasPermission>
+				<!-- <th>备注</th> -->
+				<%-- <shiro:hasPermission name="business:oilStockSitua:edit"><th>操作</th></shiro:hasPermission> --%>
 			</tr>
 		</thead>
 		<tbody>
@@ -86,13 +86,13 @@
 				<td>
 					<fmt:formatDate value="${oilStockSitua.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
-				<td>
+				<%-- <td>
 					${oilStockSitua.remarks}
-				</td>
-				<shiro:hasPermission name="business:oilStockSitua:edit"><td>
+				</td> --%>
+				<%-- <shiro:hasPermission name="business:oilStockSitua:edit"><td>
     				<a href="${ctx}/business/oilStockSitua/form?id=${oilStockSitua.id}">修改</a>
 					<a href="${ctx}/business/oilStockSitua/delete?id=${oilStockSitua.id}" onclick="return confirmx('确认要删除该库存情况吗？', this.href)">删除</a>
-				</td></shiro:hasPermission>
+				</td></shiro:hasPermission> --%>
 			</tr>
 		</c:forEach>
 		</tbody>
