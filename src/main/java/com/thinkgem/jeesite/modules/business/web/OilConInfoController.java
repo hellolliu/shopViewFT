@@ -3,6 +3,8 @@
  */
 package com.thinkgem.jeesite.modules.business.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,10 +19,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.common.utils.StringUtils;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.business.entity.OilConInfo;
+import com.thinkgem.jeesite.modules.business.entity.OilProcess;
+import com.thinkgem.jeesite.modules.business.enu.ProStatus;
 import com.thinkgem.jeesite.modules.business.service.OilConInfoService;
+import com.thinkgem.jeesite.modules.business.service.OilProcessService;
 
 /**
  * 合同信息Controller
@@ -33,15 +38,22 @@ public class OilConInfoController extends BaseController {
 
 	@Autowired
 	private OilConInfoService oilConInfoService;
+	@Autowired
+	private OilProcessService oilProcessService;
 	
 	@ModelAttribute
-	public OilConInfo get(@RequestParam(required=false) String id) {
+	public OilConInfo get(@RequestParam(required=false) String id,@RequestParam(required=false) String folwNumber) {
 		OilConInfo entity = null;
 		if (StringUtils.isNotBlank(id)){
 			entity = oilConInfoService.get(id);
 		}
 		if (entity == null){
 			entity = new OilConInfo();
+			entity.setFolwNumber(folwNumber);
+			List<OilConInfo> values=oilConInfoService.findList(entity);
+			if(values!=null&&values.size()!=0) {
+				entity=values.get(0);
+			}
 		}
 		return entity;
 	}
@@ -68,6 +80,11 @@ public class OilConInfoController extends BaseController {
 			return form(oilConInfo, model);
 		}
 		oilConInfoService.save(oilConInfo);
+		OilProcess oilProcess=new OilProcess();
+		oilProcess.setCNumber(oilConInfo.getFolwNumber());;
+		oilProcess=oilProcessService.findList(oilProcess).get(0);
+		oilProcess.setStatus(ProStatus.yw_sucess.getCode());
+		oilProcessService.save(oilProcess);
 		addMessage(redirectAttributes, "保存合同信息表成功");
 		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
 	}

@@ -32,85 +32,85 @@
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="oilBusInfo" action="${ctx}/business/oilBusInfo/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
+		<form:hidden path="oilProcess.cNumber"/>
+		<form:hidden path="oilProcess.status"/>
+		<form:hidden path="oilProcess.perName"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
 			<label class="control-label">用户公司名称：</label>
 			<div class="controls">
 				<form:input path="cName" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<span class="help-inline"><font color="red">*</font> </span>  
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">负责人：</label>
+			<label class="control-label">公司负责人：</label>
 			<div class="controls">
-				<form:select path="perName" class="input-xlarge required">
-					<form:option value="" label=""/>
-					<form:options items="${fns:getDictList('')}" itemLabel="label" itemValue="value" htmlEscape="false"/>
-				</form:select>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="perName" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">购买意向：</label>
 			<div class="controls">
-				<form:input path="intention" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="intention" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">关注产品品牌：</label>
 			<div class="controls">
-				<form:input path="brand" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="brand" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">用量：</label>
 			<div class="controls">
-				<form:input path="dosage" htmlEscape="false" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="dosage" htmlEscape="false" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">使用周期：</label>
 			<div class="controls">
-				<form:input path="usaCycle" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="usaCycle" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">付款方式：</label>
 			<div class="controls">
-				<form:input path="payMethod" htmlEscape="false" maxlength="100" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="payMethod" htmlEscape="false" maxlength="100" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">电话：</label>
 			<div class="controls">
-				<form:input path="phone" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="phone" htmlEscape="false" maxlength="64" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
-		<div class="control-group">
+	<%-- 	<div class="control-group">
 			<label class="control-label">流程表编号：</label>
 			<div class="controls">
 				<form:input path="flowNumber" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">公司地址：</label>
 			<div class="controls">
-				<form:input path="comAddress" htmlEscape="false" maxlength="255" class="input-xlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:input path="comAddress" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label">备注：</label>
 			<div class="controls">
-				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required"/>
-				<span class="help-inline"><font color="red">*</font> </span>
+				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge "/>
+				<!-- <span class="help-inline"><font color="red">*</font> </span> -->
 			</div>
 		</div>
 		<div class="form-actions">

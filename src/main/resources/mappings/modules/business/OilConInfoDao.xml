@@ -47,6 +47,9 @@
 			<if test="shippingAdd != null and shippingAdd != ''">
 				AND a.shipping_add = #{shippingAdd}
 			</if>
+			<if test="folwNumber != null and folwNumber != ''">
+				AND a.folw_number = #{folwNumber}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

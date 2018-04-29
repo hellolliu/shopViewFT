@@ -33,6 +33,9 @@
 		<include refid="oilProcessJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="cNumber != null and cNumber != ''">
+				AND a.c_number = #{cNumber}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

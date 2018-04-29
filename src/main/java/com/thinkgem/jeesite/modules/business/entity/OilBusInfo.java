@@ -23,9 +23,9 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 	private String usaCycle;		// 使用周期
 	private String payMethod;		// 付款方式
 	private String phone;		// 电话
-	private String flowNumber;		// 流程表编号
+	private String flowNumber;		// 流程编号
 	private String comAddress;		// 公司地址
-	
+	private OilProcess oilProcess;
 	public OilBusInfo() {
 		super();
 	}
@@ -34,7 +34,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		super(id);
 	}
 
-	@Length(min=1, max=255, message="c_name长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="c_name长度必须介于 1 和 255 之间")
 	public String getCName() {
 		return cName;
 	}
@@ -43,7 +43,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.cName = cName;
 	}
 	
-	@Length(min=1, max=255, message="per_name长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="per_name长度必须介于 1 和 255 之间")
 	public String getPerName() {
 		return perName;
 	}
@@ -52,7 +52,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.perName = perName;
 	}
 	
-	@Length(min=1, max=255, message="intention长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="intention长度必须介于 1 和 255 之间")
 	public String getIntention() {
 		return intention;
 	}
@@ -61,7 +61,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.intention = intention;
 	}
 	
-	@Length(min=1, max=255, message="brand长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="brand长度必须介于 1 和 255 之间")
 	public String getBrand() {
 		return brand;
 	}
@@ -78,7 +78,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.dosage = dosage;
 	}
 	
-	@Length(min=1, max=255, message="usa_cycle长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="usa_cycle长度必须介于 1 和 255 之间")
 	public String getUsaCycle() {
 		return usaCycle;
 	}
@@ -87,7 +87,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.usaCycle = usaCycle;
 	}
 	
-	@Length(min=1, max=100, message="pay_method长度必须介于 1 和 100 之间")
+	//@Length(min=1, max=100, message="pay_method长度必须介于 1 和 100 之间")
 	public String getPayMethod() {
 		return payMethod;
 	}
@@ -96,7 +96,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.payMethod = payMethod;
 	}
 	
-	@Length(min=1, max=64, message="phone长度必须介于 1 和 64 之间")
+	//@Length(min=1, max=64, message="phone长度必须介于 1 和 64 之间")
 	public String getPhone() {
 		return phone;
 	}
@@ -105,7 +105,7 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.phone = phone;
 	}
 	
-	@Length(min=1, max=64, message="flow_number长度必须介于 1 和 64 之间")
+	//@Length(min=1, max=64, message="flow_number长度必须介于 1 和 64 之间")
 	public String getFlowNumber() {
 		return flowNumber;
 	}
@@ -114,13 +114,21 @@ public class OilBusInfo extends DataEntity<OilBusInfo> {
 		this.flowNumber = flowNumber;
 	}
 	
-	@Length(min=1, max=255, message="com_address长度必须介于 1 和 255 之间")
+	//@Length(min=1, max=255, message="com_address长度必须介于 1 和 255 之间")
 	public String getComAddress() {
 		return comAddress;
 	}
 
 	public void setComAddress(String comAddress) {
 		this.comAddress = comAddress;
+	}
+
+	public OilProcess getOilProcess() {
+		return oilProcess;
+	}
+
+	public void setOilProcess(OilProcess oilProcess) {
+		this.oilProcess = oilProcess;
 	}
 	
 }

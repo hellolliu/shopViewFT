@@ -13,6 +13,8 @@ import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.thinkgem.jeesite.modules.business.enu.ProStatus;
+
 /**
  * 封装各种生成唯一性ID算法的工具类.
  * @author ThinkGem

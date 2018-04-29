@@ -32,6 +32,7 @@
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="oilConInfo" action="${ctx}/business/oilConInfo/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
+		<form:hidden path="folwNumber"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
 			<label class="control-label">产品名称：</label>
@@ -68,13 +69,13 @@
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">流程表编号：</label>
 			<div class="controls">
 				<form:input path="folwNumber" htmlEscape="false" maxlength="64" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">支付方式：</label>
 			<div class="controls">

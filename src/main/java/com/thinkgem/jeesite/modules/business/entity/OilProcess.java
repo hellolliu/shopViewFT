@@ -53,5 +53,5 @@ public class OilProcess extends DataEntity<OilProcess> {
 	public void setPerName(String perName) {
 		this.perName = perName;
 	}
-	
+
 }

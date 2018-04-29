@@ -20,7 +20,7 @@ public class OilConInfo extends DataEntity<OilConInfo> {
 	private String shippingAdd;		// 收货地址
 	private String deliveryCycle;		// 供货周期
 	private String totalAmount;		// 总量
-	private String folwNumber;		// 流程表编号
+	private String folwNumber;		// 流程编号
 	private String paymentMethod;		// 支付方式
 	private String totalDue;		// 应付总金额
 	

@@ -19,10 +19,14 @@
 		a.update_by AS "updateBy.id",
 		a.update_date AS "updateDate",
 		a.del_flag AS "delFlag",
-		a.remarks AS "remarks"
+		a.remarks AS "remarks",
+		b.c_number AS "oilProcess.cNumber",
+		b.status AS "oilProcess.status",
+		b.per_name AS "oilProcess.perName"
 	</sql>
 	
 	<sql id="oilBusInfoJoins">
+	left join oil_process b on a.flow_number=b.c_number 
 	</sql>
     
 	<select id="get" resultType="OilBusInfo">
@@ -48,6 +52,9 @@
 			</if>
 			<if test="comAddress != null and comAddress != ''">
 				AND a.com_address = #{comAddress}
+			</if>
+			<if test="oilProcess != null">
+				AND b.per_name = #{oilProcess.perName}
 			</if>
 		</where>
 		<choose>
