@@ -41,13 +41,13 @@
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
 		</div>
-		<div class="control-group">
+		<%-- <div class="control-group">
 			<label class="control-label">订单号：</label>
 			<div class="controls">
 				<form:input path="orderNumber" htmlEscape="false" maxlength="32" class="input-xlarge required"/>
 				<span class="help-inline"><font color="red">*</font> </span>
 			</div>
-		</div>
+		</div> --%>
 		<div class="control-group">
 			<label class="control-label">收货地址：</label>
 			<div class="controls">

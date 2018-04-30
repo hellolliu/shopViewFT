@@ -72,7 +72,12 @@ public class OilConInfoController extends BaseController {
 		model.addAttribute("oilConInfo", oilConInfo);
 		return "modules/business/oilConInfoForm";
 	}
-
+	@RequiresPermissions("business:oilConInfo:view")
+	@RequestMapping(value = "form2")
+	public String form2(OilConInfo oilConInfo, Model model) {
+		model.addAttribute("oilConInfo", oilConInfo);
+		return "modules/business/oilConInfoForm2";
+	}
 	@RequiresPermissions("business:oilConInfo:edit")
 	@RequestMapping(value = "save")
 	public String save(OilConInfo oilConInfo, Model model, RedirectAttributes redirectAttributes) {
@@ -86,7 +91,7 @@ public class OilConInfoController extends BaseController {
 		oilProcess.setStatus(ProStatus.yw_sucess.getCode());
 		oilProcessService.save(oilProcess);
 		addMessage(redirectAttributes, "保存合同信息表成功");
-		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
+		return "redirect:"+Global.getAdminPath()+"/business/oilBusInfo/?repage";
 	}
 	
 	@RequiresPermissions("business:oilConInfo:edit")
@@ -96,5 +101,17 @@ public class OilConInfoController extends BaseController {
 		addMessage(redirectAttributes, "删除合同信息表成功");
 		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
 	}
-
+	@RequiresPermissions("business:oilConInfo:edit")
+	@RequestMapping(value = "change")
+	public String change(OilConInfo oilConInfo, Model model, RedirectAttributes redirectAttributes) {
+		if (!beanValidator(model, oilConInfo)){
+			return form(oilConInfo, model);
+		}
+		OilProcess oilProcess=new OilProcess();
+		oilProcess.setCNumber(oilConInfo.getFolwNumber());;
+		oilProcess=oilProcessService.findList(oilProcess).get(0);
+		oilProcess.setStatus(oilConInfo.getRemarks());
+		oilProcessService.save(oilProcess);
+		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
+	}
 }

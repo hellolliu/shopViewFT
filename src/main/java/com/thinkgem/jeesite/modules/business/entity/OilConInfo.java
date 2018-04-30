@@ -23,7 +23,7 @@ public class OilConInfo extends DataEntity<OilConInfo> {
 	private String folwNumber;		// 流程编号
 	private String paymentMethod;		// 支付方式
 	private String totalDue;		// 应付总金额
-	
+	private OilProcess oilProcess;
 	public OilConInfo() {
 		super();
 	}
@@ -100,6 +100,14 @@ public class OilConInfo extends DataEntity<OilConInfo> {
 
 	public void setTotalDue(String totalDue) {
 		this.totalDue = totalDue;
+	}
+
+	public OilProcess getOilProcess() {
+		return oilProcess;
+	}
+
+	public void setOilProcess(OilProcess oilProcess) {
+		this.oilProcess = oilProcess;
 	}
 	
 }

@@ -6,95 +6,74 @@
 	<meta name="decorator" content="default"/>
 </head>
 <body>
-	<form:form id="inputForm" modelAttribute="testAudit" action="${ctx}/oa/testAudit/save" method="post" class="form-horizontal">
-		<form:hidden path="id"/>
-		<form:hidden path="act.taskId"/>
-		<form:hidden path="act.taskName"/>
-		<form:hidden path="act.taskDefKey"/>
-		<form:hidden path="act.procInsId"/>
-		<form:hidden path="act.procDefId"/>
-		<form:hidden id="flag" path="act.flag"/>
-		<sys:message content="${message}"/>
+<c:if test="${oilBusInfo!=null }">
+	<form:form id="inputForm" modelAttribute="oilBusInfo" action="${ctx}/oa/testAudit/save" method="post" class="form-horizontal">
 		<fieldset>
-			<legend>审批申请</legend>
+			<legend>业务信息</legend>
 			<table class="table-form">
 				<tr>
-					<td class="tit">姓名</td><td>
-						<sys:treeselect id="user" name="user.id" value="${testAudit.user.id}" labelName="user.name" labelValue="${testAudit.user.name}" 
-							title="用户" url="/sys/office/treeData?type=3" cssClass="required recipient" cssStyle="width:150px" 
-							allowClear="true" notAllowSelectParent="true" smallBtn="false"/>
-					</td><td class="tit">部门</td><td>
-						<sys:treeselect id="office" name="office.id" value="${testAudit.office.id}" labelName="office.name" labelValue="${testAudit.office.name}" 
-							title="用户" url="/sys/office/treeData?type=2" cssClass="required recipient" cssStyle="width:150px" 
-							allowClear="true" notAllowSelectParent="true" smallBtn="false"/>
-					</td><td class="tit">岗位职级</td><td>
-						<form:input path="post" htmlEscape="false" maxlength="50"/>
-					</td>
+					<td class="tit">公司名称</td>
+					<td>${oilBusInfo.CName }</td>
+					<td class="tit">公司负责人</td>
+					<td>${oilBusInfo.perName }</td>
+					<td class="tit">电话</td>
+					<td>${oilBusInfo.phone }</td>
 				</tr>
 				<tr>
-					<td class="tit">调整原因</td>
+					<td class="tit">公司地址</td>
 					<td colspan="5">
-						<form:textarea path="content" class="required" rows="5" maxlength="200" cssStyle="width:500px"/>
+						 ${oilBusInfo.phone }
 					</td>
 				</tr>
 				<tr>
-					<td class="tit" rowspan="3">调整原因</td>
-					<td class="tit">薪酬档级</td>
-					<td><form:input path="olda" htmlEscape="false" maxlength="50"/></td>
-					<td class="tit" rowspan="3">拟调整标准</td>
-					<td class="tit">薪酬档级</td>
-					<td><form:input path="newa" htmlEscape="false" maxlength="50"/></td>
+					<td class="tit">关注产品品牌</td>
+					<td class="tit" colspan="2">${oilBusInfo.brand }</td>
+					<td class="tit">购买意向</td>
+					<td class="tit" colspan="2">${oilBusInfo.intention }</td>
 				</tr>
 				<tr>
-					<td class="tit">月工资额</td>
-					<td><form:input path="oldb" htmlEscape="false" maxlength="50"/></td>
-					<td class="tit">月工资额</td>
-					<td><form:input path="newb" htmlEscape="false" maxlength="50"/></td>
+					<td class="tit">用量</td>
+					<td class="tit" colspan="2">${oilBusInfo.dosage }</td>
+					<td class="tit">使用周期</td>
+					<td class="tit" colspan="2">${oilBusInfo.usaCycle }</td>
 				</tr>
 				<tr>
-					<td class="tit">年薪金额</td>
-					<td><form:input path="oldc" htmlEscape="false" maxlength="50"/></td>
-					<td class="tit">年薪金额</td>
-					<td><form:input path="newc" htmlEscape="false" maxlength="50"/></td>
-				</tr>
-				<tr>
-					<td class="tit">月增资</td>
-					<td colspan="2"><form:input path="addNum" htmlEscape="false" maxlength="50"/></td>
-					<td class="tit">执行时间</td>
-					<td colspan="2"><form:input path="exeDate" htmlEscape="false" maxlength="50"/></td>
-				</tr>
-				<tr>
-					<td class="tit">人力资源部意见</td>
-					<td colspan="5">
-						${testAudit.hrText}
-					</td>
-				</tr>
-				<tr>
-					<td class="tit">分管领导意见</td>
-					<td colspan="5">
-						${testAudit.leadText}
-					</td>
-				</tr>
-				<tr>
-					<td class="tit">集团主要领导意见</td>
-					<td colspan="5">
-						${testAudit.mainLeadText}
-					</td>
+					<td class="tit">付款方式</td>
+					<td class="tit" colspan="2">${oilBusInfo.payMethod }</td>
+					<td class="tit">状态</td>
+					<td class="tit" colspan="2">${fns:getDictLabel(oilBusInfo.oilProcess.status, 'proStatus', '')}</td>
 				</tr>
 			</table>
 		</fieldset>
-		<div class="form-actions">
-			<shiro:hasPermission name="oa:testAudit:edit">
-				<input id="btnSubmit" class="btn btn-primary" type="submit" value="提交申请" onclick="$('#flag').val('yes')"/>&nbsp;
-				<c:if test="${not empty testAudit.id}">
-					<input id="btnSubmit2" class="btn btn-inverse" type="submit" value="销毁申请" onclick="$('#flag').val('no')"/>&nbsp;
-				</c:if>
-			</shiro:hasPermission>
+	</form:form> 
+</c:if>
+<c:if test="${oilConInfo!=null }">
+	<form:form id="inputForm" modelAttribute="oilBusInfo" action="${ctx}/oa/testAudit/save" method="post" class="form-horizontal">
+		<fieldset>
+			<legend>合同信息</legend>
+			<table class="table-form">
+				<tr>
+					<td class="tit" >产品名称</td>
+					<td class="tit" colspan="2">${oilConInfo.gname }</td>
+					<td class="tit">收货地址</td>
+					<td class="tit" colspan="2">${oilConInfo.shippingAdd }</td>
+				</tr>
+				<tr>
+					<td class="tit">供货周期</td>
+					<td class="tit" colspan="2">${oilConInfo.deliveryCycle }</td>
+					<td class="tit">总量</td>
+					<td class="tit" colspan="2">${oilConInfo.totalAmount }</td>
+				</tr>
+				<tr>
+					<td class="tit"> 支付方式</td>
+					<td class="tit" colspan="2">${oilConInfo.paymentMethod }</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form:form> 
+</c:if>
+        <div class="form-actions">
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
-		<c:if test="${not empty testAudit.id}">
-			<act:histoicFlow procInsId="${testAudit.act.procInsId}" />
-		</c:if>
-	</form:form> 
 </body>
 </html>

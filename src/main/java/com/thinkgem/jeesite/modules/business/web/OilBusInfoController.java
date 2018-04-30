@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.business.web;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,11 @@ import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.common.utils.IdGen;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.business.entity.OilBusInfo;
+import com.thinkgem.jeesite.modules.business.entity.OilConInfo;
 import com.thinkgem.jeesite.modules.business.entity.OilProcess;
 import com.thinkgem.jeesite.modules.business.enu.ProStatus;
 import com.thinkgem.jeesite.modules.business.service.OilBusInfoService;
+import com.thinkgem.jeesite.modules.business.service.OilConInfoService;
 import com.thinkgem.jeesite.modules.business.service.OilProcessService;
 import com.thinkgem.jeesite.modules.business.service.OilProductsService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
@@ -43,7 +46,8 @@ public class OilBusInfoController extends BaseController {
 	private OilBusInfoService oilBusInfoService;
 	@Autowired
 	private OilProcessService oilProcessService;
-	
+	@Autowired
+	private OilConInfoService oilConInfoService;
 	@ModelAttribute
 	public OilBusInfo get(@RequestParam(required=false) String id) {
 		OilBusInfo entity = null;
@@ -90,6 +94,15 @@ public class OilBusInfoController extends BaseController {
 	@RequestMapping(value = "show")
 	public String show(OilBusInfo oilBusInfo, Model model) {
 		model.addAttribute("oilBusInfo", oilBusInfo);
+		//合同信息
+		OilConInfo oilConInfo=new OilConInfo();
+		oilConInfo.setFolwNumber(oilBusInfo.getFlowNumber());
+		List<OilConInfo> list=oilConInfoService.findList(oilConInfo);
+		if (list!=null&&list.size()!=0) {
+			model.addAttribute("oilConInfo", list.get(0));
+		}else {
+			model.addAttribute("oilConInfo", null);
+		}
 		return "modules/business/oilBusInfoShow";
 	}
 	@RequiresPermissions("business:oilBusInfo:edit")
@@ -133,6 +146,21 @@ public class OilBusInfoController extends BaseController {
 		oilp.setStatus(ProStatus.sta_falie.getCode());
 		oilProcessService.save(oilp);
 		addMessage(redirectAttributes, "业务已终结");
+		return "redirect:"+Global.getAdminPath()+"/business/oilBusInfo/?repage";
+	}
+	@RequiresPermissions("business:oilBusInfo:edit")
+	@RequestMapping(value = "statusnext")
+	public String statusnext(OilBusInfo oilBusInfo, RedirectAttributes redirectAttributes) {
+		OilProcess oilp=oilProcessService.findList(oilBusInfo.getOilProcess()).get(0);
+		String status=oilp.getStatus();
+		if(ProStatus.yw_sucess.getCode().equals(status)) {
+			oilp.setStatus(ProStatus.sh_sucess.getCode());
+		}else {
+			int st=Integer.valueOf(status)+1;
+			oilp.setStatus("0"+st+"");
+		}
+		oilProcessService.save(oilp);
+		addMessage(redirectAttributes, "业务状态调整成功");
 		return "redirect:"+Global.getAdminPath()+"/business/oilBusInfo/?repage";
 	}
 }
