@@ -75,7 +75,7 @@
 					${oilConInfo.remarks}
 				</td>
 				<td>
-					<%-- ${fns:getDictLabel(oilConInfo.oilProcess.status, 'proStatus', '')} --%>
+					${fns:getDictLabel(oilConInfo.oilProcess.status, 'proStatus', '')} 
 				</td>
 				<td>
 				<shiro:hasPermission name="business:oilConInfo:view">
