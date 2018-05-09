@@ -35,7 +35,7 @@
 		<form:hidden path="folwNumber"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">产品名称：</label>
+			<label class="control-label">合同名称：</label>
 			<div class="controls">
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-xlarge required" readonly="true"/>
 				<span class="help-inline"><font color="red">*</font> </span>
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label">备注：</label>
+			<label class="control-label">货物信息：</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="255" class="input-xxlarge required" readonly="true"/>
 				<span class="help-inline"><font color="red">*</font> </span>

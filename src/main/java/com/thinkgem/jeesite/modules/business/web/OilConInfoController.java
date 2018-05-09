@@ -110,4 +110,19 @@ public class OilConInfoController extends BaseController {
 	public OilConInfo retuenE(OilConInfo oilConInfo, Model model, RedirectAttributes redirectAttributes) {
 		return oilConInfo;
 	}
+	@RequiresPermissions("business:oilConInfo:edit")
+	@RequestMapping(value = "change")
+	public String change(OilConInfo oilConInfo,String remarks, Model model, RedirectAttributes redirectAttributes) {
+		if (!beanValidator(model, oilConInfo)){
+			return form(oilConInfo, model);
+		}
+		OilProcess oilProcess=new OilProcess();
+		oilProcess.setCNumber(oilConInfo.getFolwNumber());;
+		oilProcess=oilProcessService.findList(oilProcess).get(0);
+		oilProcess.setStatus(remarks);
+		oilProcessService.save(oilProcess);
+		addMessage(redirectAttributes, "保存合同信息表成功");
+		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
+	}
+	
 }

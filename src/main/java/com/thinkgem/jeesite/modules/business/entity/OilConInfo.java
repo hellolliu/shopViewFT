@@ -15,7 +15,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class OilConInfo extends DataEntity<OilConInfo> {
 	
 	private static final long serialVersionUID = 1L;
-	private String gname;		// 产品名称
+	private String gname;		// 合同名称
 	private String orderNumber;		// 订单号
 	private String shippingAdd;		// 收货地址
 	private String deliveryCycle;		// 供货周期

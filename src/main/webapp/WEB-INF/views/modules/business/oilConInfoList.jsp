@@ -29,7 +29,7 @@
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
-			<li><label>产品名称：</label>
+			<li><label>合同名称：</label>
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-medium"/>
 			</li>
 			<li><label>收货地址：</label>
@@ -43,12 +43,12 @@
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
-				<th>产品名称</th>
+				<th>合同名称</th>
 				<!-- <th>订单号</th> -->
 				<th>收货地址</th>
 				<th>总量</th>
 				<th>更新日期</th>
-				<th>备注</th>
+				<th>货物信息</th>
 				<th>状态</th>
 				<shiro:hasPermission name="business:oilConInfo:edit"><th>操作</th></shiro:hasPermission>
 			</tr>
