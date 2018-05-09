@@ -49,7 +49,7 @@
 				AND a.order_number = #{orderNumber}
 			</if>
 			<if test="shippingAdd != null and shippingAdd != ''">
-				AND a.shipping_add = #{shippingAdd}
+				AND a.shipping_add like '%#{shippingAdd}%'
 			</if>
 			<if test="folwNumber != null and folwNumber != ''">
 				AND a.folw_number = #{folwNumber}

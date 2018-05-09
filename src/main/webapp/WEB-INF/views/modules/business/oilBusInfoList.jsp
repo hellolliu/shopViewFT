@@ -108,12 +108,12 @@
 				    <a href="#">业务已确认</a>
 				    <%-- <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('确认业务完成？', this.href)">确认已清账</a> --%>
 				</c:if>
-				<c:if test="${oilBusInfo.oilProcess.status=='0404' }">
-				    <a href="#">业务已确认</a>
+				<c:if test="${oilBusInfo.oilProcess.status=='0404' || oilBusInfo.oilProcess.status=='0405' }">
+				    <a href="#">业务已完成</a>
 				</c:if>
-				<c:if test="${oilBusInfo.oilProcess.status=='0405' }">
+				<%-- <c:if test="${oilBusInfo.oilProcess.status=='0405' }">
 				    <a href="#">业务已确认</a>
-				</c:if>
+				</c:if> --%>
 				<c:if test="${oilBusInfo.oilProcess.status=='0000' }">
 				业务已结束
 				</c:if>

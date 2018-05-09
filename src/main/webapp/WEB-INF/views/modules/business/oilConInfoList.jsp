@@ -4,6 +4,7 @@
 <head>
 	<title>合同信息表管理</title>
 	<meta name="decorator" content="default"/>
+	<script type="text/javascript" src="${ctxStatic }/jquery/jquery.jqprint-0.3.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
@@ -15,6 +16,9 @@
         	return false;
         }
 	</script>
+	<style type="text/css">
+	.printApplication{margin-top: 10px;}
+	</style>
 </head>
 <body>
 	<ul class="nav nav-tabs">
@@ -27,9 +31,6 @@
 		<ul class="ul-form">
 			<li><label>产品名称：</label>
 				<form:input path="gname" htmlEscape="false" maxlength="100" class="input-medium"/>
-			</li>
-			<li><label>订单号：</label>
-				<form:input path="orderNumber" htmlEscape="false" maxlength="32" class="input-medium"/>
 			</li>
 			<li><label>收货地址：</label>
 				<form:input path="shippingAdd" htmlEscape="false" maxlength="255" class="input-medium"/>
@@ -76,12 +77,17 @@
 				<td>
 					<%-- ${fns:getDictLabel(oilConInfo.oilProcess.status, 'proStatus', '')} --%>
 				</td>
-				<shiro:hasPermission name="business:oilConInfo:edit"><td>
+				<td>
+				<shiro:hasPermission name="business:oilConInfo:view">
     				<a href="${ctx}/business/oilConInfo/form2?id=${oilConInfo.id}">查看</a>
+				</shiro:hasPermission>
+				<shiro:hasPermission name="business:oilConInfo:edit">
     				<a href="#" onclick="change('${oilConInfo.id}')">状态维护</a>
+    				 <a href="#" onclick="printCKD('${oilConInfo.id}')">打印出库单</a>
 					<%-- <a href="${ctx}/business/oilConInfo/delete?id=${oilConInfo.id}" onclick="re
 					turn confirmx('确认要删除该合同信息表吗？', this.href)">删除</a> --%>
-				</td></shiro:hasPermission>
+				</shiro:hasPermission>
+				</td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -120,6 +126,49 @@
 	   $("#myModal").modal('show');
 	   var form=$("#inputForm");
 	   form.find("input[name='id']").val(number);
+   }
+   
+  function printCKD(id){
+		 $.ajax({
+			 url: ctx+'/business/oilConInfo/retuenE',
+			 type: 'POST',
+			 data: {id:id},
+			 success: function (data, status) {
+               var html = "";
+               html+='<div id="printRetireInfo" class="printApplication"><div>&nbsp;</div>';
+               html+='<h4 class="text-center">美孚润滑油代理公司</h4><div>&nbsp;</div>';
+               html+='<table width="100%" border="1" class="table-form">';
+               html+='   <tr>';
+               html+='    <td class="tit" >合同名称</td>';
+               html+='    <td class="tit" colspan="2">'+data.gname+'</td>';
+               html+='    <td class="tit">合同编号</td>';
+               html+='    <td class="tit" colspan="2"> '+data.folwNumber+' </td>';
+               html+='   </tr>';
+               html+='   <tr>';
+               html+='    <td class="tit">收货地址</td>';
+               html+='    <td class="tit" colspan="5"> '+data.shippingAdd+' </td>';
+               html+='   </tr>';
+               html+='   <tr>';
+               html+='    <td class="tit" rowspan="2">出库商品信息</td>';
+               html+='    <td class="tit">商品信息</td>';
+               html+='    <td class="tit" colspan="4"> '+data.remarks+' <div>&nbsp;</div></td>';
+               html+='   </tr>';
+               html+='   <tr>';
+               html+='    <td class="tit">支付方式</td>';
+               html+='    <td class="tit" colspan="2"> '+data.paymentMethod+' </td>';
+               html+='    <td class="tit">金额</td>';
+               html+='    <td class="tit" colspan="1"> '+data.totalDue+' </td>';
+               html+='   </tr>';
+               html+='   <tr>';
+               html+='    <td class="tit" colspan="2">产品出库确认：<div>&nbsp;</div><div>&nbsp;</div>发货人：<div></div>发货日期：</td>';
+               html+='    <td class="tit" colspan="2">产品承运确认：<div>&nbsp;</div><div>&nbsp;</div>车号：<div></div>承运单位：<div></div>司机（签名）：</td>';
+               html+='    <td class="tit" colspan="2">产品接收确认：<div>&nbsp;</div><div>&nbsp;</div>收货单位：<div></div>收货人：<div></div>收货日期：</td>';
+               html+='   </tr>';
+               html+=' </table>';
+               html+=' </div>';
+               $(html).jqprint();
+			 }
+		 });
    }
    </script>
 </body>

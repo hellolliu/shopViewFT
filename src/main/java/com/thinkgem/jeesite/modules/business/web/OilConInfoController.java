@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thinkgem.jeesite.common.config.Global;
@@ -49,10 +51,12 @@ public class OilConInfoController extends BaseController {
 		}
 		if (entity == null){
 			entity = new OilConInfo();
-			entity.setFolwNumber(folwNumber);
-			List<OilConInfo> values=oilConInfoService.findList(entity);
-			if(values!=null&&values.size()!=0) {
-				entity=values.get(0);
+			if (folwNumber!=null) {
+				entity.setFolwNumber(folwNumber);
+				List<OilConInfo> values=oilConInfoService.findList(entity);
+				if(values!=null&&values.size()!=0) {
+					entity=values.get(0);
+				}
 			}
 		}
 		return entity;
@@ -101,17 +105,9 @@ public class OilConInfoController extends BaseController {
 		addMessage(redirectAttributes, "删除合同信息表成功");
 		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
 	}
-	@RequiresPermissions("business:oilConInfo:edit")
-	@RequestMapping(value = "change")
-	public String change(OilConInfo oilConInfo, Model model, RedirectAttributes redirectAttributes) {
-		if (!beanValidator(model, oilConInfo)){
-			return form(oilConInfo, model);
-		}
-		OilProcess oilProcess=new OilProcess();
-		oilProcess.setCNumber(oilConInfo.getFolwNumber());;
-		oilProcess=oilProcessService.findList(oilProcess).get(0);
-		oilProcess.setStatus(oilConInfo.getRemarks());
-		oilProcessService.save(oilProcess);
-		return "redirect:"+Global.getAdminPath()+"/business/oilConInfo/?repage";
+	@ResponseBody
+	@RequestMapping(value = "retuenE")
+	public OilConInfo retuenE(OilConInfo oilConInfo, Model model, RedirectAttributes redirectAttributes) {
+		return oilConInfo;
 	}
 }

@@ -326,7 +326,7 @@ public class FrontController extends BaseController{
 	 * 产品介绍
 	 */
 	@RequestMapping(value = "product", method=RequestMethod.GET)
-	public String product(String theme,  HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String product(OilProducts oilProducts,  HttpServletRequest request, HttpServletResponse response, Model model) {
 		/*Page<Comment> page = new Page<Comment>(request, response);
 		Comment c = new Comment();
 		c.setCategory(comment.getCategory());
@@ -335,9 +335,10 @@ public class FrontController extends BaseController{
 		page = commentService.findPage(page, c);
 		model.addAttribute("page", page);
 		model.addAttribute("comment", comment);*/
-		OilProducts oilProducts=new OilProducts();
 		oilProducts.setIsShow("1");
-		model.addAttribute("product",oilProductsService.findList(oilProducts));
+		Page<OilProducts> page = oilProductsService.findPage(new Page<OilProducts>(request, response), oilProducts); 
+		model.addAttribute("page", page);
+		
 		Site site = CmsUtils.getSite(Site.defaultSiteId());
 		model.addAttribute("site", site);
 		return "modules/cms/front/themes/basic/product";

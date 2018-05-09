@@ -53,7 +53,7 @@
 			<legend>合同信息</legend>
 			<table class="table-form">
 				<tr>
-					<td class="tit" >产品名称</td>
+					<td class="tit" >合同名称</td>
 					<td class="tit" colspan="2">${oilConInfo.gname }</td>
 					<td class="tit">收货地址</td>
 					<td class="tit" colspan="2">${oilConInfo.shippingAdd }</td>
