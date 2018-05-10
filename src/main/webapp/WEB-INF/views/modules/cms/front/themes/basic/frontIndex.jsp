@@ -10,10 +10,12 @@
 </head>
 <body>
     <c:set var="article" value="${fnc:getArticle('2')}"/>
-    <div class="hero-unit" style="padding-bottom:35px;margin:10px 0;background:url(${article.image}) no-repeat 5px 5px;">
-      <h1>${fns:abbr(article.title,28)}</h1><p></p>
+     <h4> ${fns:abbr(article.title,28)}  <small><a href="${article.url}" class="pull-right">查看详情 &gt;&gt;</a> </small></h4>
+    <div class="hero-unit background_pic" style="padding-bottom:35px;margin:10px 0;background:url(${article.image}) no-repeat;background-size:100% 100%;-moz-background-size:100% 100%;">
+      <h1><%-- ${fns:abbr(article.title,28)} --%></h1>
+      <p></p>
       <p>${fns:abbr(fns:replaceHtml(article.articleData.content),260)}</p>
-      <p><a href="${article.url}" class="btn btn-primary btn-large">&nbsp;&nbsp;&nbsp;查看详情 &raquo;&nbsp;&nbsp;&nbsp;</a></p>
+      <p><%-- <a href="${article.url}" class="btn btn-primary btn-large">&nbsp;&nbsp;&nbsp;查看详情 &raquo;&nbsp;&nbsp;&nbsp;</a> --%></p>
     </div>
     <div class="row">
       <%-- <div class="span4">
