@@ -10,7 +10,6 @@
 </head>
 <body>
     <c:set var="article" value="${fnc:getArticle('2')}"/>
-     <h4> ${fns:abbr(article.title,28)}  <small><a href="${article.url}" class="pull-right">查看详情 &gt;&gt;</a> </small></h4>
     <%-- <div class="hero-unit background_pic" style="padding-bottom:35px;margin:10px 0;">
       <h1>${fns:abbr(article.title,28)}</h1>
       <img alt="" style="width: 100%;height: 100%" src="${article.image}">
@@ -19,9 +18,15 @@
       <p><a href="${article.url}" class="btn btn-primary btn-large">&nbsp;&nbsp;&nbsp;查看详情 &raquo;&nbsp;&nbsp;&nbsp;</a></p>
     </div> --%>
 	<div class="hero-unit row-fluid" style="padding: 10px;">
-		<div class="span12">
-			<img alt="140x140" src="${article.image}" class="img-rounded" />
+		<div class="span6">
+			<img alt="140x140" src="${article.image}" style="margin-bottom: 10px;" class="img-rounded" />
 		</div>
+		<div class="span6" style="margin-top: 30px;margin-left: 0px;">
+			<p class="text-info text-left"  style="font-size:small;">
+				<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${fns:abbr(article.title,28)}&nbsp;</em>${fns:abbr(article.description,400)}
+			</p>
+		</div>
+		<div class="span11"><h3> ${fns:abbr(article.title,28)}  <small><a href="${article.url}" class="pull-right">查看详情 &gt;&gt;</a> </small></h3></div>
 	</div>
     <div class="row">
       <%-- <div class="span4">

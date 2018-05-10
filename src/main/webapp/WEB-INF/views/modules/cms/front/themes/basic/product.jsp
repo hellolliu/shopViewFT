@@ -48,7 +48,7 @@
 								${pro.introduction }
 							</p>
 							<p>
-								<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
+								<!-- <a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a> -->
 							</p>
 						</div>
 					</div>
