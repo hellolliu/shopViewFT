@@ -78,10 +78,10 @@
 					${fns:getDictLabel(oilConInfo.oilProcess.status, 'proStatus', '')} 
 				</td>
 				<td>
-				<shiro:hasPermission name="business:oilConInfo:view">
+				<shiro:hasPermission name="business:oilConInfo1:view">
     				<a href="${ctx}/business/oilConInfo/form2?id=${oilConInfo.id}">查看</a>
 				</shiro:hasPermission>
-				<shiro:hasPermission name="business:oilConInfo:edit">
+				<shiro:hasPermission name="business:oilConInfo1:edit">
     				<a href="#" onclick="change('${oilConInfo.id}')">状态维护</a>
     				 <a href="#" onclick="printCKD('${oilConInfo.id}')">打印出库单</a>
 					<%-- <a href="${ctx}/business/oilConInfo/delete?id=${oilConInfo.id}" onclick="re
