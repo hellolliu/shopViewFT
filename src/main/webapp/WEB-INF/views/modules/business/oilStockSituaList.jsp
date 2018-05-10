@@ -55,6 +55,7 @@
 				<th>产品名称</th>
 				<th>销售总量</th>
 				<th>库存总量</th>
+				<th>库存</th>
 				<th>进价</th>
 				<th>阈值</th>
 				<th>更新日期</th>
@@ -76,6 +77,9 @@
 				</td>
 				<td>
 					${oilStockSitua.factno}
+				</td>
+				<td>
+					${oilStockSitua.factno-oilStockSitua.saleno}
 				</td>
 				<td>
 					${oilStockSitua.purchasePrice}

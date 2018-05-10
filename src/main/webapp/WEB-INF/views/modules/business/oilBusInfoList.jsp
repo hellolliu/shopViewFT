@@ -94,18 +94,18 @@
 					<a href="${ctx}/business/oilBusInfo/end?id=${oilBusInfo.id}" onclick="return confirmx('确认要结束该业务吗？', this.href)">结束业务</a>
 				</c:if>
 				<c:if test="${oilBusInfo.oilProcess.status=='0301' }">
-				    <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('确认客户已收货？', this.href)">确认收货</a>
+				    <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('业务已完成？？', this.href)">确认完成业务</a>
 				</c:if>
 				<c:if test="${oilBusInfo.oilProcess.status=='0401' }">
-				    <a href="#">业务已确认</a>
+				    <a href="#">业务已完成</a>
 				    <%--  <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('确认已开发票？', this.href)">确认已开发票</a> --%>
 				</c:if>
 				<c:if test="${oilBusInfo.oilProcess.status=='0402' }">
-				    <a href="#">业务已确认</a>
+				    <a href="#">业务已完成</a>
 				    <%-- <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('确认客户贷款已清算？', this.href)">确认贷款已清算</a> --%>
 				</c:if>
 				<c:if test="${oilBusInfo.oilProcess.status=='0403' }">
-				    <a href="#">业务已确认</a>
+				    <a href="#">业务已完成</a>
 				    <%-- <a href="${ctx}/business/oilBusInfo/statusnext?id=${oilBusInfo.id}" onclick="return confirmx('确认业务完成？', this.href)">确认已清账</a> --%>
 				</c:if>
 				<c:if test="${oilBusInfo.oilProcess.status=='0404' || oilBusInfo.oilProcess.status=='0405' }">
